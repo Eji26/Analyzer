@@ -10,10 +10,13 @@ import webbrowser
 import os
 from functools import wraps
 import secrets
+import eventlet
+
+eventlet.monkey_patch()
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)  # Generate a secure random key
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*")
 
 # Authentication credentials
 USERNAME = "Bijibiji"
@@ -148,4 +151,5 @@ if __name__ == '__main__':
     socketio.run(app, 
                  host='0.0.0.0',
                  port=port,
-                 allow_unsafe_werkzeug=True)  # Required for newer versions of Flask-SocketIO
+                 debug=False,
+                 use_reloader=False)
