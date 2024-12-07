@@ -1,0 +1,295 @@
+:root {
+    --primary-color: #2a2a72;
+    --secondary-color: #009ffd;
+    --accent-color: #ff6b6b;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #333333;
+}
+
+body {
+    background: linear-gradient(135deg, var(--background-color) 0%, #e9ecef 100%);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-fluid {
+    max-width: 1400px;
+    padding: 20px;
+}
+
+/* Header Styling */
+h2.text-center {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background: var(--card-background);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 15px 15px 0 0 !important;
+    padding: 15px 20px;
+}
+
+.card-header h5 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Market Selection */
+#market-select {
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+/* Digits Display */
+.digits-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.digit-box {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Probability Bars */
+.probability-bar {
+    margin-bottom: 15px;
+}
+
+.probability-bar label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.progress {
+    height: 25px;
+    border-radius: 8px;
+    background-color: #e9ecef;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    transition: width 0.6s ease;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Current Market Info */
+#current-price, #last-digit, #last-update, #total-samples {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Input Styling */
+.form-control {
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    .digit-box {
+        min-width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+}
+
+/* Prediction Styling */
+.prediction {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+}
+
+.prediction.higher {
+    background-color: #28a745;
+}
+
+.prediction.lower {
+    background-color: #dc3545;
+}
+
+.prediction.equal {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Trend Styling */
+.trend {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.trend-up {
+    background-color: #28a745;
+    color: white;
+}
+
+.trend-down {
+    background-color: #dc3545;
+    color: white;
+}
+
+.trend-stable {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/* Flash Styling */
+.flash {
+    animation: flash-animation 0.5s;
+}
+
+@keyframes flash-animation {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(255, 193, 7, 0.3); }
+    100% { background-color: transparent; }
+}
+
+/* Button Styling */
+.btn-primary {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Chosen Digit Styling */
+#chosen-digit {
+    max-width: 100px;
+}
+
+/* Stats Styling */
+#stats p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+#stats span {
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Form Select Styling */
+.form-select {
+    margin-bottom: 1rem;
+}
+
+/* Horizontal Circular Digit Display */
+.digit-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    justify-content: flex-start;
+}
+
+.digit {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    background-color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    animation: popIn 0.5s ease-in-out;
+}
+
+.digit:hover {
+    transform: scale(1.1);
+}
+
+.digit.higher {
+    background-color: #28a745;
+}
+
+.digit.lower {
+    background-color: #dc3545;
+}
+
+.digit.equal {
+    background-color: #ffc107;
+    color: #000;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
