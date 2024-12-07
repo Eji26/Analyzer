@@ -15,8 +15,8 @@ import eventlet
 eventlet.monkey_patch()
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)  # Generate a secure random key
-socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*")
+app.secret_key = secrets.token_hex(16)
+socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*", logger=True, engineio_logger=True)
 
 # Authentication credentials
 USERNAME = "Bijibiji"
@@ -144,12 +144,9 @@ if __name__ == '__main__':
     # Start WebSocket connection
     connect_websocket()
     
-    # Get port from environment variable or use default
-    port = int(os.environ.get('PORT', 8000))
-    
-    print(f"Starting Deriv Market Predictor on port {port}...")
-    socketio.run(app, 
-                 host='0.0.0.0',
-                 port=port,
-                 debug=False,
-                 use_reloader=False)
+    if os.environ.get('RENDER'):
+        # Running on Render.com
+        socketio.run(app)
+    else:
+        # Running locally
+        socketio.run(app, host='0.0.0.0', port=5000, debug=True)
